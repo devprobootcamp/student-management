@@ -7,6 +7,7 @@ import com.devprobootcamp.student_management.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping()
-    public ResponseEntity<Void> addStudentAndCourse(@RequestBody StudentDTO studentDTO) {
+    public ResponseEntity<Void> addStudentAndCourse(@RequestBody @Validated StudentDTO studentDTO) {
         studentService.addStudent(studentDTO);
         return ResponseEntity.noContent().build();
     }
